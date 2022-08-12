@@ -1,0 +1,31 @@
+---
+title: "runoff_volumes"
+author: "Kiran Favre"
+date: "2022-08-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+```{r}
+source(here::here("src", "storm_runoff.R"))
+```
+
+#using function to find volume for range of fractions and area = 182
+```{r}
+fraction_range <- seq(from = 0.6, to = 0.8, by = 0.01)
+
+
+volume_182 <- predict_runoff(fraction_range, 182)
+
+```
+
+bind seq of fractions with runoff volumes
+```{r}
+volume_df <- data.frame(fraction_range, volume_182)
+```
+
