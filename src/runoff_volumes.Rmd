@@ -29,3 +29,15 @@ bind seq of fractions with runoff volumes
 volume_df <- data.frame(fraction_range, volume_182)
 ```
 
+
+ggplot and ggsave
+```{r}
+ggplot(volume_df, aes(x = fraction_range, y = volume_182)) +
+  labs( x = "impervious fraction", y = "storm water runoff volume") +
+         geom_point() + geom_line()
+
+
+ggsave(here("figs", "stormwater_vs_fraction.png"))
+```
+
+
